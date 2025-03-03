@@ -1,0 +1,34 @@
+model: "elic_llm"
+dataset: "imagenet"
+dataset_path: "/work/dataset/ILSVRC"
+
+epochs: 60
+num_workers:
+batch_size: 32
+test_batch_size: 50
+cuda: True
+save: True
+seed: 42
+PYTORCH_CUDA_ALLOC_CONF:
+
+
+exp_name: "ComNeck"
+comet_apt_key: "CometML API Key"
+comet_project_name: "Comet Project Name"
+comet_workspace: "Comet Workspace"
+
+root: "ROOTPATH"
+resume_exp_key:
+checkpoint: "CHECKPOINTPATH"
+quality_level: 1
+
+sanity:            True
+state_dict_strict: True
+
+
+optimizer: {
+  adapter: {
+    'learning_rate': 1.e-4,
+    'Milestones': [20]
+  }
+}

@@ -1,0 +1,40 @@
+model: "elic_llm"
+dataset: "imagenet"
+num_workers: 0
+cuda: True
+save: True
+seed: 42
+
+exp_name: "Bridging_cls"
+comet_apt_key: "COME_API_KEY"
+comet_project_name: "COMET_PROJECT_NAME"
+comet_workspace: "COMET_WORKSPACE"
+
+root: "ROOTPATH"
+checkpoint: "CHECKPOINT_PATH"
+model_type: "high"
+quality_level: 3
+
+
+image_size: 128
+n_class: 1000
+batch_size: 1
+max_seq_len: 1024 
+output_type: "next_token_prediction"
+mini_imagenet_path: "DATASETPATH/ILSVRC/val"
+vq_config_path: "vqgan_configs/v2l.yaml"
+llama_model_path: "WEIGHTPATH/llama/llama-2-7b"
+induction: 1
+stage_1_ckpt: "V2L-Tokenizer/checkpoints/v2l-decode.pth"
+embed_dim: 768
+quantizer_type: "org"
+use_cblinear: 1
+use_crossatt_dec: 1
+local_embedding_path: "V2L-Tokenizer/codebooks/local_codebook_embedding.pth"
+global_embedding_path: "V2L-Tokenizer/codebooks/global_codebook_embedding.pth"
+way: 5
+shot: 1
+token_num: 21
+repeat: 0
+clip_texts: "V2L-Tokenizer/codebooks/global_vocabulary.npy"
+clip_codebook: "V2L-Tokenizer/codebooks/global_codebook_embedding.pth"

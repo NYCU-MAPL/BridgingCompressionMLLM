@@ -1,0 +1,28 @@
+model: "elic_llm"
+dataset: "coco_Karpathy"
+dataset_path: "/work/dataset/coco"
+labels_paths: "/work/dataset/coco/annotations/Karpathy_split_all.json"
+num_workers: 4
+test_batch_size: 8
+cuda: True
+device: 0
+seed: 42
+
+exp_name: "Bridging_cap"
+comet_apt_key: "CometML API Key"
+comet_project_name: "Comet Project Name"
+comet_workspace: "Comet Workspace"
+
+root: "ROOTPATH"
+checkpoint: "CHECKPOINT_PATH"
+quality_level: 3
+
+llama_adapter_v1: {
+    ckpt_path:  "../../../pretrain-weight/llama/llama-1-7b/consolidated.00.pth",
+    param_path:  "../../../pretrain-weight/llama/llama-1-7b/params.json",
+    tokenizer_path:  "../../../pretrain-weight/llama/llama-1-7b/tokenizer.model",
+    instruct_adapter_path:  "../../../pretrain-weight/LLaMA-Adapter-V1/llama_adapter_len10_layer30_release.pth",
+    caption_adapter_path:  "../../../pretrain-weight/LLaMA-Adapter-V1/llama_adapter_len10_layer30_caption_vit_l.pth",
+}
+
+
