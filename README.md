@@ -38,6 +38,14 @@ To train the model with the d1 setting:
    python examples/train.py -c config/TransformNeck.yaml
    ```
 
+## Pre-trained Weights
+The weights of our method corresponding to three different settings (d1, d2, and d3) can be found below:
+|         Setting         |       |       |       |       |
+|:---------------------:|-------|-------|-------|-------|
+|     d1    | [1](https://github.com/NYCU-MAPL/BridgingCompressionMLLM/releases/download/v1.0/d1_1.pth.tar) | [2](https://github.com/NYCU-MAPL/BridgingCompressionMLLM/releases/download/v1.0/d1_2.pth.tar) | [3](https://github.com/NYCU-MAPL/BridgingCompressionMLLM/releases/download/v1.0/d1_3.pth.tar) | [4](https://github.com/NYCU-MAPL/BridgingCompressionMLLM/releases/download/v1.0/d1_4.pth.tar) |
+|    d2   | [1](https://github.com/NYCU-MAPL/BridgingCompressionMLLM/releases/download/v1.0/d2_1.pth.tar) | [2](https://github.com/NYCU-MAPL/BridgingCompressionMLLM/releases/download/v1.0/d2_2.pth.tar) | [3](https://github.com/NYCU-MAPL/BridgingCompressionMLLM/releases/download/v1.0/d2_3.pth.tar) | [4](https://github.com/NYCU-MAPL/BridgingCompressionMLLM/releases/download/v1.0/d2_4.pth.tar) |
+| d3 | [1](https://github.com/NYCU-MAPL/BridgingCompressionMLLM/releases/download/v1.0/d3_1.pth.tar) | [2](https://github.com/NYCU-MAPL/BridgingCompressionMLLM/releases/download/v1.0/d3_2.pth.tar) | [3](https://github.com/NYCU-MAPL/BridgingCompressionMLLM/releases/download/v1.0/d3_3.pth.tar) | [4](https://github.com/NYCU-MAPL/BridgingCompressionMLLM/releases/download/v1.0/d3_4.pth.tar) |
+
 ## Evaluation
 
 ### Captioning with LLaMA-Adapter V1
