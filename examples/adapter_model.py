@@ -31,41 +31,6 @@ def deconv(in_channels, out_channels, kernel_size=5, stride=2):
         padding=kernel_size // 2,
     )
 
-class SFTLayer(nn.Module):
-    def __init__(self, cond_channel=192, feat_channel=192, residual=False):
-        super(SFTLayer, self).__init__()
-        self.SFT_scale_conv0 = nn.Conv2d(cond_channel, cond_channel, 1)
-        self.SFT_scale_conv1 = nn.Conv2d(cond_channel, feat_channel, 1)
-        self.SFT_shift_conv0 = nn.Conv2d(cond_channel, cond_channel, 1)
-        self.SFT_shift_conv1 = nn.Conv2d(cond_channel, feat_channel, 1)
-        self.residual = residual
-
-    def forward(self, x):
-        # x[0]: fea; x[1]: cond
-        scale = self.SFT_scale_conv1(F.leaky_relu(self.SFT_scale_conv0(x[1]), 0.1, inplace=True))
-        shift = self.SFT_shift_conv1(F.leaky_relu(self.SFT_shift_conv0(x[1]), 0.1, inplace=True))
-        if self.residual:
-            return x[0] * (scale + 1) + shift + x[0]
-        return x[0] * (scale + 1) + shift
-class LRM(nn.Module):
-    def __init__(self, feat_channel=320):
-        super(LRM, self).__init__()
-        self.sft0 = SFTLayer(cond_channel=feat_channel, feat_channel=feat_channel)
-        self.conv0 = nn.Conv2d(feat_channel, feat_channel, 3, 1, 1)
-
-        self.sft1 = SFTLayer(cond_channel=feat_channel, feat_channel=feat_channel)
-        self.conv1 = nn.Conv2d(feat_channel, feat_channel, 3, 1, 1)
-
-    def forward(self, x):
-        x = (x,x)
-        # x[0]: fea; x[1]: cond
-        fea = self.sft0(x)
-        fea = self.conv0(fea)
-
-        fea = F.relu(fea, inplace=True)
-        fea = self.sft1((fea, fea))
-        fea = self.conv1(fea)
-        return x[0] + fea
 
 class LayerNorm(nn.LayerNorm):
     """Subclass torch's LayerNorm to handle fp16."""
